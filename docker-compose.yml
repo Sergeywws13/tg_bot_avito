@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:14
+    container_name: avito_postgres
+    environment:
+      POSTGRES_USER: avito_user
+      POSTGRES_PASSWORD: "Av1t0_S3cr3t!"
+      POSTGRES_DB: avito_bot_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - avito_network
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: avito_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@example.com"
+      PGADMIN_DEFAULT_PASSWORD: "Admin@123"
+    ports:
+      - "5050:80"
+    networks:
+      - avito_network
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
+
+networks:
+  avito_network:
