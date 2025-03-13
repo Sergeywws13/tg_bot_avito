@@ -1,0 +1,258 @@
+2025-03-14 00:51:21,467 - aiogram.dispatcher - INFO - Polling stopped
+2025-03-14 00:51:21,468 - __main__ - INFO - Бот останавливается...
+2025-03-14 00:51:21,744 - __main__ - ERROR - Произошла ошибка: object NoneType can't be used in 'await' expression
+Traceback (most recent call last):
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 543, in start_polling
+    done, pending = await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\AppData\Local\Programs\Python\Python312\Lib\asyncio\tasks.py", line 464, in wait
+    return await _wait(fs, timeout, return_when, loop)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\AppData\Local\Programs\Python\Python312\Lib\asyncio\tasks.py", line 550, in _wait
+    await waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\serse\Documents\GitHub\tg_bot_avito\main.py", line 80, in main
+    await dp.start_polling(bot)
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 556, in start_polling
+    await self.emit_shutdown(bot=bots[-1], **workflow_data)
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 273, in emit_shutdown
+    await self.shutdown.trigger(*args, **kwargs)
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\event\event.py", line 42, in trigger
+    await handler.call(*args, **kwargs)
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "c:\Users\serse\Documents\GitHub\tg_bot_avito\main.py", line 31, in on_shutdown
+    await db.get_pool().close()
+TypeError: object NoneType can't be used in 'await' expression
+2025-03-14 00:51:21,755 - __main__ - INFO - Бот завершил работу.
+2025-03-14 00:51:21,756 - aiogram.dispatcher - INFO - Polling stopped for bot @avito_managers_bot id=7438274980 - 'avito_manager_bot'
+2025-03-14 00:51:26,200 - __main__ - INFO - Инициализация бота...
+2025-03-14 00:51:26,636 - __main__ - INFO - HTTP-сервер запущен на http://localhost:5000
+2025-03-14 00:51:26,637 - __main__ - INFO - Бот запущен и готов к работе.
+2025-03-14 00:51:26,638 - __main__ - INFO - Бот запускается...
+2025-03-14 00:51:26,975 - __main__ - INFO - Пул подключений к базе данных создан.
+2025-03-14 00:51:26,977 - aiogram.dispatcher - INFO - Start polling
+2025-03-14 00:51:27,387 - aiogram.dispatcher - INFO - Run polling for bot @avito_managers_bot id=7438274980 - 'avito_manager_bot'
+2025-03-14 00:51:30,628 - aiogram.event - INFO - Update id=408270764 is handled. Duration 452 ms by bot id=7438274980
+2025-03-14 00:51:42,938 - aiogram.event - INFO - Update id=408270765 is handled. Duration 218 ms by bot id=7438274980
+2025-03-14 00:51:44,691 - aiogram.event - INFO - Update id=408270766 is handled. Duration 296 ms by bot id=7438274980
+2025-03-14 00:53:26,443 - aiogram.event - INFO - Update id=408270767 is handled. Duration 156 ms by bot id=7438274980
+2025-03-14 00:53:32,834 - aiogram.event - INFO - Update id=408270768 is handled. Duration 203 ms by bot id=7438274980
+2025-03-14 00:56:47,087 - aiogram.event - INFO - Update id=408270769 is handled. Duration 156 ms by bot id=7438274980
+2025-03-14 00:59:12,675 - aiogram.dispatcher - INFO - Polling stopped
+2025-03-14 00:59:12,675 - __main__ - INFO - Бот останавливается...
+2025-03-14 00:59:12,947 - __main__ - ERROR - Произошла ошибка: object NoneType can't be used in 'await' expression
+Traceback (most recent call last):
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 543, in start_polling
+    done, pending = await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\AppData\Local\Programs\Python\Python312\Lib\asyncio\tasks.py", line 464, in wait
+    return await _wait(fs, timeout, return_when, loop)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\AppData\Local\Programs\Python\Python312\Lib\asyncio\tasks.py", line 550, in _wait
+    await waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\serse\Documents\GitHub\tg_bot_avito\main.py", line 80, in main
+    await dp.start_polling(bot)
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 556, in start_polling
+    await self.emit_shutdown(bot=bots[-1], **workflow_data)
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 273, in emit_shutdown
+    await self.shutdown.trigger(*args, **kwargs)
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\event\event.py", line 42, in trigger
+    await handler.call(*args, **kwargs)
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "c:\Users\serse\Documents\GitHub\tg_bot_avito\main.py", line 31, in on_shutdown
+    await db.get_pool().close()
+TypeError: object NoneType can't be used in 'await' expression
+2025-03-14 00:59:12,960 - __main__ - INFO - Бот завершил работу.
+2025-03-14 00:59:12,961 - aiogram.dispatcher - INFO - Polling stopped for bot @avito_managers_bot id=7438274980 - 'avito_manager_bot'
+2025-03-14 01:01:33,282 - __main__ - INFO - Инициализация бота...
+2025-03-14 01:01:33,815 - __main__ - INFO - HTTP-сервер запущен на http://localhost:5000
+2025-03-14 01:01:33,815 - __main__ - INFO - Бот запущен и готов к работе.
+2025-03-14 01:01:33,816 - __main__ - INFO - Бот запускается...
+2025-03-14 01:01:34,225 - __main__ - INFO - Пул подключений к базе данных создан.
+2025-03-14 01:01:34,226 - aiogram.dispatcher - INFO - Start polling
+2025-03-14 01:01:34,793 - aiogram.dispatcher - INFO - Run polling for bot @avito_managers_bot id=7438274980 - 'avito_manager_bot'
+2025-03-14 01:01:40,874 - aiogram.event - INFO - Update id=408270770 is handled. Duration 641 ms by bot id=7438274980
+2025-03-14 01:01:43,129 - aiogram.event - INFO - Update id=408270771 is handled. Duration 156 ms by bot id=7438274980
+2025-03-14 01:01:50,977 - aiogram.event - INFO - Update id=408270772 is handled. Duration 265 ms by bot id=7438274980
+2025-03-14 01:02:15,667 - aiogram.event - INFO - Update id=408270773 is not handled. Duration 0 ms by bot id=7438274980
+2025-03-14 01:02:15,668 - aiogram.event - ERROR - Cause exception while process update id=408270773 by bot id=7438274980
+ValueError: Fernet key must be 32 url-safe base64-encoded bytes.
+Traceback (most recent call last):
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\fsm\middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\serse\Documents\GitHub\tg_bot_avito\src\middleware\db.py", line 9, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 174, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 166, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "c:\Users\serse\Documents\GitHub\tg_bot_avito\src\handlers\accounts.py", line 18, in process_token
+    encrypted_token = encrypt_token(token)
+                      ^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\serse\Documents\GitHub\tg_bot_avito\src\utils\crypto.py", line 8, in encrypt_token
+    fernet = Fernet(base64.urlsafe_b64encode(key))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\cryptography\fernet.py", line 40, in __init__
+    raise ValueError(
+ValueError: Fernet key must be 32 url-safe base64-encoded bytes.
+2025-03-14 01:02:20,707 - aiogram.event - INFO - Update id=408270774 is not handled. Duration 16 ms by bot id=7438274980
+2025-03-14 01:02:20,707 - aiogram.event - ERROR - Cause exception while process update id=408270774 by bot id=7438274980
+ValueError: Fernet key must be 32 url-safe base64-encoded bytes.
+Traceback (most recent call last):
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\fsm\middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\serse\Documents\GitHub\tg_bot_avito\src\middleware\db.py", line 9, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 174, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 166, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "c:\Users\serse\Documents\GitHub\tg_bot_avito\src\handlers\accounts.py", line 18, in process_token
+    encrypted_token = encrypt_token(token)
+                      ^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\serse\Documents\GitHub\tg_bot_avito\src\utils\crypto.py", line 8, in encrypt_token
+    fernet = Fernet(base64.urlsafe_b64encode(key))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\cryptography\fernet.py", line 40, in __init__
+    raise ValueError(
+ValueError: Fernet key must be 32 url-safe base64-encoded bytes.
+2025-03-14 01:02:24,873 - aiogram.dispatcher - INFO - Polling stopped
+2025-03-14 01:02:24,874 - __main__ - INFO - Бот останавливается...
+2025-03-14 01:02:25,145 - __main__ - ERROR - Произошла ошибка: object NoneType can't be used in 'await' expression
+Traceback (most recent call last):
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 543, in start_polling
+    done, pending = await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\AppData\Local\Programs\Python\Python312\Lib\asyncio\tasks.py", line 464, in wait
+    return await _wait(fs, timeout, return_when, loop)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\serse\AppData\Local\Programs\Python\Python312\Lib\asyncio\tasks.py", line 550, in _wait
+    await waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\serse\Documents\GitHub\tg_bot_avito\main.py", line 80, in main
+    await dp.start_polling(bot)
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 556, in start_polling
+    await self.emit_shutdown(bot=bots[-1], **workflow_data)
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 273, in emit_shutdown
+    await self.shutdown.trigger(*args, **kwargs)
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\event\event.py", line 42, in trigger
+    await handler.call(*args, **kwargs)
+  File "C:\Users\serse\Documents\GitHub\tg_bot_avito\.venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "c:\Users\serse\Documents\GitHub\tg_bot_avito\main.py", line 31, in on_shutdown
+    await db.get_pool().close()
+TypeError: object NoneType can't be used in 'await' expression
+2025-03-14 01:02:25,156 - __main__ - INFO - Бот завершил работу.
+2025-03-14 01:02:25,156 - aiogram.dispatcher - INFO - Polling stopped for bot @avito_managers_bot id=7438274980 - 'avito_manager_bot'
+2025-03-14 01:02:29,614 - __main__ - INFO - Инициализация бота...
+2025-03-14 01:02:30,122 - __main__ - INFO - HTTP-сервер запущен на http://localhost:5000
+2025-03-14 01:02:30,123 - __main__ - INFO - Бот запущен и готов к работе.
+2025-03-14 01:02:30,123 - __main__ - INFO - Бот запускается...
+2025-03-14 01:02:30,661 - __main__ - INFO - Пул подключений к базе данных создан.
+2025-03-14 01:02:30,662 - aiogram.dispatcher - INFO - Start polling
+2025-03-14 01:02:31,424 - aiogram.dispatcher - INFO - Run polling for bot @avito_managers_bot id=7438274980 - 'avito_manager_bot'
+2025-03-14 01:02:48,967 - aiogram.event - INFO - Update id=408270775 is handled. Duration 953 ms by bot id=7438274980
