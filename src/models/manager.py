@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy.orm import relationship
 from src.models.base import Base
 
 class Manager(Base):
@@ -6,6 +7,7 @@ class Manager(Base):
 
     id = Column(Integer, primary_key=True)
     telegram_id = Column(Integer, unique=True, nullable=False)
-    is_active = Column(Boolean, default=True)
-    timezone = Column(String(50), default="UTC")
+
+    chats = relationship("AvitoChat", back_populates="manager")
+    accounts = relationship("AvitoAccount", back_populates="manager", cascade="all, delete-orphan")
     
