@@ -30,7 +30,7 @@ class TokenRefresher:
         while self._running:
             try:
                 await self._refresh_tokens()
-                await asyncio.sleep(180)  # Проверка каждые 5 минут
+                await asyncio.sleep(82800) # 23 часа
             except Exception as e:
                 logger.error(f"Scheduler error: {str(e)}")
                 await asyncio.sleep(60)

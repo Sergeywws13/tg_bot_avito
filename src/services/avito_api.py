@@ -34,27 +34,16 @@ class AvitoAPI:
         data = await self._request("GET", endpoint)
         return data['id']
 
-    # async def get_unread_chats(self):
-    #     try:
-    #         # Проверяем токен доступа
-    #         if not self.access_token:
-    #             raise ValueError("Недействительный токен доступа")
+    async def get_unread_chats(self):
+        """Получить чаты с непрочитанными сообщениями"""
+        user_id = await self._get_user_id()
+        endpoint = f"/messenger/v2/accounts/{user_id}/chats?unread_only=true"
+        return await self._request("GET", endpoint)
 
-    #         # Проверяем права доступа
-    #         if not self.has_permission("read_chats"):
-    #             raise ValueError("Недостаточно прав доступа")
-
-    #         # Отправляем запрос к API Avito
-    #         response = await self._request("GET", "/messenger/v2/accounts/{user_id}/chats?unread_only=true")
-    #         return response.json()["chats"]
-    #     except Exception as e:
-    #         logger.error(f"Ошибка получения чатов: {str(e)}")
-    #         raise
-
-    async def get_unread_messages(self):
+    async def get_unread_messages(self, chat_id: str):
         """Получить непрочитанные сообщения"""
         user_id = await self._get_user_id()
-        endpoint = f"/messenger/v1/accounts/{user_id}/messages"
+        endpoint = f"/messenger/v3/accounts/{user_id}/chats/{chat_id}/messages"
         return await self._request("GET", endpoint)
 
     async def send_message(self, chat_id: str, text: str) -> Dict:

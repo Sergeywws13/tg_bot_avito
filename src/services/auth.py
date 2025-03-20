@@ -56,6 +56,7 @@ async def refresh_avito_token(refresh_token: str) -> dict:
     except aiohttp.ClientResponseError as e:
         logger.error(f"Ошибка обновления токена: {e.status} - {await response.text()}")
         raise
+    print(token_data)
 
 
 async def check_token_validity(access_token: str) -> bool:

@@ -29,9 +29,7 @@ async def handle_chats_command(message: Message, session: AsyncSession):
 
         all_messages = []
         for account in accounts:
-            api = AvitoAPI(account.access_token)
-
-            # Проверка и обновление токена перед отправкой запроса
+            # Проверка и обновление токена перед созданием API
             if not await check_token_validity(account.access_token):
                 logger.info("Токен истек, обновляем...")
                 try:
@@ -40,49 +38,61 @@ async def handle_chats_command(message: Message, session: AsyncSession):
                     account.refresh_token = new_tokens.get('refresh_token', account.refresh_token)
                     await session.commit()
                 except Exception as e:
-                    logger.error(f"Ошибка обновления токена для аккаунта {account.id}: {str(e)}")
-                    await message.answer("⚠️ Не удалось обновить токен. Пожалуйста, авторизуйтесь снова.")
-                    return
+                    logger.error(f"Ошибка обновления токена: {str(e)}")
+                    await message.answer("⚠️ Не удалось обновить токен")
+                    continue
+
+            # Создаем API с актуальным токеном
+            api = AvitoAPI(account.access_token)
 
             try:
-                messages = await api.get_unread_messages()
-                for msg in messages:
-                    msg['account_name'] = account.account_name
-                    all_messages.append(msg)
+                # Получаем чаты с непрочитанными сообщениями
+                chats = (await api.get_unread_chats()).get("chats", [])
+                for chat in chats:
+                    messages = (await api.get_unread_messages(chat["id"])).get("messages", [])
+                    for msg in messages:
+                        all_messages.append({
+                            "content": msg.get("text", "Нет текста"),
+                            "chat_id": chat["id"],
+                            "account": account.account_name
+                        })
+
             except AvitoAPIError as e:
-                logger.error(f"Ошибка получения сообщений для аккаунта {account.id}: {str(e)}")
+                logger.error(f"Ошибка API: {str(e)}")
                 continue
 
         if not all_messages:
             return await message.answer("📭 Нет новых сообщений")
 
-        response = []
-        for msg in all_messages:
-            response.append(
-                f"💬 Сообщение ID: {msg['id']}\n"
-                f"📩 Сообщение: {msg['content'][:50]}\n"
-                f"📩 Сообщение: {msg['content'][:50]}...\n"
-                f"📂 Аккаунт: {msg['account_name']}\n"
-            )
+        response = [
+            f"💬 Чат ID: {msg['chat_id']}\n"
+            f"📩 {msg['content'][:100]}\n"
+            f"🔗 Аккаунт: {msg['account']}\n"
+            for msg in all_messages
+        ]
 
-        await message.answer("Новые сообщения из Avito:\n" + "\n\n".join(response))
+        await message.answer("📨 Непрочитанные сообщения:\n\n" + "\n\n".join(response))
 
     except Exception as e:
-        logger.error(f"Ошибка: {str(e)}")
-        await message.answer("🚫 Внутренняя ошибка")
+        logger.error(f"Ошибка: {str(e)}", exc_info=True)
+        await message.answer("🚫 Произошла ошибка")
 
 
 @router.message(F.reply_to_message)
 async def handle_reply(message: Message, session: AsyncSession):
-    """Ответить на сообщение"""
     try:
-        # Извлекаем chat_id из ответа
-        original_text = message.reply_to_message.text
-        if "Чат ID: " not in original_text:
-            return await message.answer("⚠️ Неверный формат сообщения для ответа.")
+        # Извлекаем chat_id из текста сообщения
+        original = message.reply_to_message.text
+        chat_id = None
+        for line in original.split("\n"):
+            if line.startswith("💬 Чат ID: "):
+                chat_id = line.split("💬 Чат ID: ")[1].strip()
+                break
+        
+        if not chat_id:
+            return await message.answer("❌ Неверный формат сообщения")
 
-        chat_id = original_text.split("Чат ID: ")[1].split("\n")[0].strip()
-
+        # Получаем аккаунт
         result = await session.execute(
             select(AvitoAccount)
             .join(Manager)
@@ -91,22 +101,24 @@ async def handle_reply(message: Message, session: AsyncSession):
         account = result.scalars().first()
 
         if not account:
-            return await message.answer("🚫 Аккаунт не найден")
+            return await message.answer("❌ Аккаунт не найден")
 
+        # Обновляем токен при необходимости
         api = AvitoAPI(account.access_token)
-
         if not await check_token_validity(account.access_token):
-            logger.info("Токен истек, обновляем...")
             new_tokens = await refresh_avito_token(account.refresh_token)
             account.access_token = new_tokens['access_token']
             account.refresh_token = new_tokens.get('refresh_token', account.refresh_token)
             await session.commit()
 
+        # Отправляем сообщение
         await api.send_message(chat_id, message.text)
-        await message.answer("✅ Сообщение отправлено")
+        await message.answer("✅ Ответ отправлен")
 
     except AvitoAPIError as e:
-        await message.answer(f"⚠️ Ошибка отправки: {str(e)}")
+        await message.answer(f"❌ Ошибка Avito: {str(e)}")
     except Exception as e:
-        logger.error(f"Reply error: {str(e)}")
-        await message.answer("🚫 Ошибка обработки ответа")
+        logger.error(f"Ошибка: {str(e)}")
+        await message.answer("🚫 Внутренняя ошибка")
+
+        
