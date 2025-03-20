@@ -14,4 +14,3 @@ class AvitoAccount(Base):
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
     manager = relationship("Manager", back_populates="accounts")
-    chats = relationship("AvitoChat", back_populates="account")

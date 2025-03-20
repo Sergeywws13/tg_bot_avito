@@ -1,5 +1,5 @@
 import asyncio
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta
 import logging
 from aiogram import Bot, Dispatcher
 from aiohttp import web
@@ -44,7 +44,6 @@ async def on_shutdown():
 
 async def handle_callback(request: web.Request):
     try:
-        # Получаем параметры из GET-запроса
         query = request.query
         code = query.get("code")
         state = query.get("state")
@@ -54,15 +53,11 @@ async def handle_callback(request: web.Request):
 
         logger.info(f"Received code: {code}, state: {state}")
 
-        # Обмен кода на токены
         token_data = await exchange_code_for_token(code)
 
-        # Сохраняем в базу
         async with db.session_factory() as session:
-            # Находим менеджера
             manager = await get_or_create_manager(session, int(state))
 
-            # Создаем запись аккаунта
             account = AvitoAccount(
                 access_token=token_data['access_token'],
                 refresh_token=token_data.get('refresh_token', ''),
@@ -73,7 +68,6 @@ async def handle_callback(request: web.Request):
             session.add(account)
             await session.commit()
 
-        # Уведомляем пользователя
         bot = request.app['bot']
         await bot.send_message(
             chat_id=state,

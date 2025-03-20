@@ -8,6 +8,5 @@ class Manager(Base):
     id = Column(Integer, primary_key=True)
     telegram_id = Column(Integer, unique=True, nullable=False)
 
-    chats = relationship("AvitoChat", back_populates="manager")
     accounts = relationship("AvitoAccount", back_populates="manager", cascade="all, delete-orphan")
     

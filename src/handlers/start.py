@@ -1,14 +1,12 @@
 from aiogram import Router, types, F
 from aiogram.filters import Command
-from aiogram.fsm.state import StatesGroup, State
 from aiogram.fsm.context import FSMContext
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 import os
 
-from src.models import Manager, AvitoAccount
-from src.services.auth import get_client_credentials_token, exchange_code_for_token
+from src.models import Manager
 from src.database.connector import db
 
 router = Router()
