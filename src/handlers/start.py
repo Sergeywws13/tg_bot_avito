@@ -1,13 +1,11 @@
 from aiogram import Router, types, F
 from aiogram.filters import Command
-from aiogram.fsm.context import FSMContext
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 import os
 
 from src.models import Manager
-from src.database.connector import db
 
 router = Router()
 
@@ -22,7 +20,7 @@ async def get_or_create_manager(session: AsyncSession, telegram_id: int) -> Mana
     return manager
 
 @router.message(Command("start"))
-async def start_command(message: types.Message, state: FSMContext):
+async def start_command(message: types.Message):
     auth_url = (
         f"https://www.avito.ru/oauth?"
         f"response_type=code&"

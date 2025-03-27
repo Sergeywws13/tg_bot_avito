@@ -33,7 +33,7 @@ async def handle_chats_command(message: Message, session: AsyncSession):
             if not await check_token_validity(account.access_token):
                 logger.info("Токен истек, обновляем...")
                 try:
-                    new_tokens = await refresh_avito_token(account.refresh_token)
+                    new_tokens = await refresh_avito_token(account.refresh_token, account.id)
                     account.access_token = new_tokens['access_token']
                     account.refresh_token = new_tokens.get('refresh_token', account.refresh_token)
                     await session.commit()

@@ -1,6 +1,10 @@
+from datetime import datetime
 import aiohttp
 from typing import Dict, List, Any
 import logging
+
+from src.database.connector import db
+from src.models.avito_accounts import AvitoAccount
 
 logger = logging.getLogger(__name__)
 
@@ -33,6 +37,12 @@ class AvitoAPI:
         endpoint = "/core/v1/accounts/self"
         data = await self._request("GET", endpoint)
         return data['id']
+    
+    async def _is_token_valid(self) -> bool:
+        """Проверяет, не истек ли срок действия токена."""
+        async with db.session_factory() as session:
+            account = await session.get(AvitoAccount, self.account_id)
+            return account.expires_at > datetime.now()
 
     async def get_unread_chats(self):
         """Получить чаты с непрочитанными сообщениями"""

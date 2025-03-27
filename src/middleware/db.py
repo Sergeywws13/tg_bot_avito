@@ -1,6 +1,4 @@
 from aiogram import BaseMiddleware
-from typing import Callable, Dict, Any, Awaitable
-from sqlalchemy.ext.asyncio import AsyncSession
 from src.database.connector import db
 import logging
 

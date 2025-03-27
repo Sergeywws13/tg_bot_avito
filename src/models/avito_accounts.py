@@ -1,4 +1,4 @@
-from sqlalchemy import Column, DateTime, Integer, String, ForeignKey, func
+from sqlalchemy import Boolean, Column, DateTime, Integer, String, ForeignKey, func
 from sqlalchemy.orm import relationship
 from src.models.base import Base
 
@@ -12,5 +12,6 @@ class AvitoAccount(Base):
     expires_at = Column(DateTime(timezone=True))
     manager_id = Column(Integer, ForeignKey("managers.id"), nullable=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
+    is_active = Column(Boolean, default=True)
 
     manager = relationship("Manager", back_populates="accounts")
